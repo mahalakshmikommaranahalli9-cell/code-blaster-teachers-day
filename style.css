@@ -1,16 +1,737 @@
-/* =================================
-   MENTOR SUPPORT SECTION
-================================= */
+/* =========================================================
+   CODE BLASTER.exe
+   TEACHERS' DAY 2026
+   MAHALAKSHMI
+========================================================= */
 
-.mentor-section {
-    padding: 120px 8%;
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #050505;
+    color: #f5f5f5;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+body::selection {
+    background: #00ff9c;
+    color: #000;
+}
+
+button {
+    font-family: inherit;
+}
+
+section {
     position: relative;
 }
 
-.mentor-section > h2 {
-    font-size: clamp(45px, 6vw, 85px);
+
+/* =========================================================
+   BOOT SCREEN
+========================================================= */
+
+#boot-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: #020202;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    transition: opacity 0.7s ease;
+}
+
+.terminal {
+    width: 100%;
+    max-width: 850px;
+    background: #080808;
+    border: 1px solid rgba(0, 255, 156, 0.35);
+    box-shadow: 0 0 50px rgba(0, 255, 156, 0.08);
+}
+
+.terminal-top {
+    min-height: 45px;
+    padding: 0 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #111;
+    border-bottom: 1px solid #222;
+    color: #888;
+    font-family: monospace;
+    font-size: 13px;
+}
+
+.terminal-title {
+    margin-left: 10px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.dot.red {
+    background: #ff5f57;
+}
+
+.dot.yellow {
+    background: #febc2e;
+}
+
+.dot.green {
+    background: #28c840;
+}
+
+.terminal-body {
+    padding: 35px;
+    font-family: monospace;
+    color: #aaa;
+    line-height: 1.9;
+}
+
+.terminal-body p {
+    min-height: 25px;
+}
+
+#progress {
+    width: 0%;
+    height: 100%;
+    background: #00ff9c;
+    transition: width 0.1s linear;
+}
+
+.progress-container {
+    width: 100%;
+    height: 5px;
+    margin-top: 20px;
+    background: #222;
+    overflow: hidden;
+}
+
+#percentage {
+    color: #00ff9c;
+    margin-top: 8px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.success {
+    color: #00ff9c !important;
+}
+
+#target h1 {
+    color: #fff;
+    font-size: clamp(35px, 7vw, 70px);
+    line-height: 1;
+    margin: 20px 0 10px;
+}
+
+#target h1 span {
+    color: #00ff9c;
+}
+
+.teacher-name {
+    color: #aaa;
+    letter-spacing: 3px;
+}
+
+.access {
+    color: #00ff9c;
+}
+
+#enterBtn {
+    margin-top: 25px;
+    padding: 13px 22px;
+    border: 1px solid #00ff9c;
+    background: transparent;
+    color: #00ff9c;
+    cursor: pointer;
+    font-family: monospace;
+    transition: 0.3s ease;
+}
+
+#enterBtn:hover {
+    background: #00ff9c;
+    color: #000;
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+#main-content {
+    display: none;
+    min-height: 100vh;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 25px 6%;
+
+    background: rgba(5, 5, 5, 0.65);
+    backdrop-filter: blur(12px);
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+    transition: 0.3s ease;
+}
+
+header.scrolled {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    background: rgba(5, 5, 5, 0.92);
+}
+
+.logo {
+    font-family: monospace;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: #00ff9c;
+}
+
+.status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #888;
+    font-size: 11px;
+    font-family: monospace;
+}
+
+.status span {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #00ff9c;
+    box-shadow: 0 0 10px #00ff9c;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    min-height: 100vh;
+    padding: 160px 8% 100px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 60px;
+
+    background:
+        radial-gradient(
+            circle at 80% 50%,
+            rgba(0, 255, 156, 0.07),
+            transparent 35%
+        );
+}
+
+.hero-content {
+    max-width: 850px;
+}
+
+.small-title {
+    color: #00ff9c;
+    font-family: monospace;
+    font-size: 13px;
+    letter-spacing: 3px;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-size: clamp(55px, 8vw, 120px);
+    line-height: 0.9;
+    letter-spacing: -5px;
+}
+
+.hero h1 span {
+    color: transparent;
+    -webkit-text-stroke: 1px #00ff9c;
+}
+
+.hero-text {
+    max-width: 520px;
+    margin-top: 35px;
+    color: #999;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.scroll-btn {
+    margin-top: 35px;
+
+    padding: 15px 23px;
+
+    border: 1px solid #333;
+    background: transparent;
+    color: #fff;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.scroll-btn i {
+    margin-right: 8px;
+    color: #00ff9c;
+}
+
+.scroll-btn:hover {
+    border-color: #00ff9c;
+    transform: translateY(-3px);
+}
+
+.code-decoration {
+    color: #00ff9c;
+    font-family: monospace;
+    font-size: 15px;
+    line-height: 2;
+    opacity: 0.35;
+}
+
+
+/* =========================================================
+   COMMON SECTION LABEL
+========================================================= */
+
+.section-label {
+    color: #00ff9c;
+    font-family: monospace;
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+}
+
+
+/* =========================================================
+   TEACHER SECTION
+========================================================= */
+
+.teacher-section {
+    padding: 120px 8%;
+}
+
+.teacher-section > h2,
+.impact-section > h2,
+.memory-header > h2,
+.message-section > h2,
+.easter-section > h2 {
+    font-size: clamp(50px, 7vw, 100px);
+    line-height: 0.9;
+    letter-spacing: -3px;
+}
+
+.teacher-section h2 span,
+.impact-section h2 span,
+.memory-header h2 span,
+.message-section h2 span,
+.easter-section h2 span {
+    color: transparent;
+    -webkit-text-stroke: 1px #00ff9c;
+}
+
+.teacher-card {
+    max-width: 1100px;
+    margin: 70px auto 0;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+
+    gap: 70px;
+    align-items: center;
+}
+
+.teacher-image {
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid #222;
+    background: #080808;
+}
+
+.sir-photo {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+.teacher-info h3 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.role {
+    color: #00ff9c;
+    font-family: monospace;
+    margin-bottom: 25px;
+}
+
+.teacher-info > p:not(.role) {
+    color: #999;
+    line-height: 1.8;
+    font-size: 17px;
+}
+
+.stats {
+    margin-top: 40px;
+
+    display: flex;
+    gap: 45px;
+    flex-wrap: wrap;
+}
+
+.stats div {
+    display: flex;
+    flex-direction: column;
+}
+
+.stats strong {
+    font-size: 35px;
+    color: #00ff9c;
+}
+
+.stats small {
+    color: #666;
+    font-family: monospace;
+    margin-top: 5px;
+}
+
+
+/* =========================================================
+   BEYOND CODE
+========================================================= */
+
+.impact-section {
+    padding: 120px 8%;
+    background: #080808;
+}
+
+.impact-grid {
+    margin-top: 70px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.impact-card {
+    padding: 40px 30px;
+
+    min-height: 260px;
+
+    border: 1px solid #222;
+    background: #050505;
+
+    transition: 0.4s ease;
+}
+
+.impact-card:hover {
+    transform: translateY(-8px);
+    border-color: #00ff9c;
+}
+
+.impact-card i {
+    color: #00ff9c;
+    font-size: 30px;
+    margin-bottom: 35px;
+}
+
+.impact-card h3 {
+    font-size: 27px;
+    margin-bottom: 15px;
+}
+
+.impact-card p {
+    color: #888;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   SYSTEM LOG
+========================================================= */
+
+.terminal-section {
+    padding: 120px 8%;
+}
+
+.big-terminal {
+    max-width: 1000px;
+    margin: 60px auto 0;
+
+    border: 1px solid rgba(0, 255, 156, 0.3);
+    background: #070707;
+
+    box-shadow:
+        0 0 50px rgba(0, 255, 156, 0.06);
+}
+
+.big-terminal-body {
+    padding: 40px;
+
+    font-family: monospace;
+    font-size: 15px;
+    line-height: 2;
+    color: #aaa;
+}
+
+.green-text {
+    color: #00ff9c !important;
+}
+
+
+/* =========================================================
+   MEMORY SECTION
+========================================================= */
+
+.memory-section {
+    padding: 120px 8%;
+    background: #080808;
+}
+
+.memory-terminal {
+    max-width: 1000px;
+    margin: 60px auto 0;
+
+    border: 1px solid rgba(0, 255, 156, 0.25);
+    background: #050505;
+}
+
+.memory-terminal-bar {
+    min-height: 45px;
+    padding: 0 18px;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    background: #111;
+    border-bottom: 1px solid #222;
+
+    color: #777;
+    font-family: monospace;
+    font-size: 13px;
+}
+
+.memory-terminal-bar span:last-child {
+    margin-left: 10px;
+}
+
+.memory-terminal-body {
+    padding: 30px;
+
+    font-family: monospace;
+    line-height: 2;
+    color: #888;
+}
+
+.memory-card {
+    width: 100%;
+    max-width: 1100px;
+
+    margin: 70px auto 0;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+
+    gap: 70px;
+    align-items: center;
+}
+
+.memory-photo {
+    width: 100%;
+    min-width: 0;
+
+    overflow: hidden;
+
+    background: #000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #222;
+
+    position: relative;
+}
+
+.memory-photo img {
+    width: 100%;
+    height: auto;
+
+    display: block;
+
+    object-fit: contain;
+    object-position: center top;
+}
+
+.memory-scan {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+
+    background: #00ff9c;
+
+    opacity: 0.4;
+
+    animation: scanPhoto 4s linear infinite;
+}
+
+@keyframes scanPhoto {
+
+    0% {
+        top: 0;
+    }
+
+    100% {
+        top: 100%;
+    }
+
+}
+
+.memory-photo-label {
+    position: absolute;
+    left: 15px;
+    bottom: 15px;
+
+    padding: 7px 10px;
+
+    background: rgba(0, 0, 0, 0.8);
+
+    color: #00ff9c;
+
+    font-family: monospace;
+    font-size: 11px;
+}
+
+.memory-info {
+    min-width: 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+.memory-number {
+    color: #00ff9c;
+    font-family: monospace;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.memory-info h3 {
+    margin-top: 20px;
+
+    font-size: clamp(42px, 5vw, 75px);
     line-height: 0.95;
-    margin-bottom: 60px;
+
+    max-width: 100%;
+
+    overflow-wrap: break-word;
+}
+
+.memory-info h3 span {
+    color: transparent;
+    -webkit-text-stroke: 1px #00ff9c;
+}
+
+.memory-line {
+    width: 80px;
+    height: 2px;
+
+    background: #00ff9c;
+
+    margin: 30px 0;
+}
+
+.memory-date {
+    color: #777;
+    font-family: monospace;
+    font-size: 13px;
+    letter-spacing: 2px;
+}
+
+.memory-text {
+    margin-top: 25px;
+
+    max-width: 100%;
+
+    color: #999;
+
+    line-height: 1.8;
+    font-size: 16px;
+
+    overflow-wrap: break-word;
+}
+
+.memory-highlight {
+    margin-top: 25px;
+
+    color: #00ff9c;
+
+    font-family: monospace;
+}
+
+.memory-signature {
+    margin-top: 20px;
+
+    color: #fff;
+    font-family: monospace;
+}
+
+
+/* =========================================================
+   MENTOR SUPPORT
+========================================================= */
+
+.mentor-section {
+    padding: 120px 8%;
+}
+
+.mentor-section > h2 {
+    font-size: clamp(50px, 7vw, 100px);
+    line-height: 0.9;
+    letter-spacing: -3px;
 }
 
 .mentor-section > h2 span {
@@ -21,116 +742,549 @@
 .mentor-terminal {
     width: 100%;
     max-width: 1000px;
-    margin: 0 auto;
-    border: 1px solid rgba(0, 255, 156, 0.4);
-    background: rgba(0, 0, 0, 0.55);
-    box-shadow: 0 0 40px rgba(0, 255, 156, 0.08);
+
+    margin: 70px auto 0;
+
+    border: 1px solid rgba(0, 255, 156, 0.35);
+
+    background: #070707;
+
+    box-shadow:
+        0 0 50px rgba(0, 255, 156, 0.06);
 }
 
 .mentor-terminal-body {
     padding: 35px;
+
     font-family: monospace;
+
     font-size: 15px;
+
     line-height: 1.9;
+
+    color: #999;
 }
 
 .mentor-terminal-body p {
-    margin: 0 0 8px;
+    margin-bottom: 8px;
 }
 
 .mentor-message {
     max-width: 800px;
+
     margin: 70px auto 0;
+
     text-align: center;
 }
 
 .mentor-message > p {
-    color: #aaa;
-    font-size: 18px;
-    line-height: 1.9;
-    margin-bottom: 18px;
-}
+    color: #999;
 
-.mentor-message h3 {
-    color: #fff;
-    font-size: 35px;
-    margin: 30px 0 20px;
+    font-size: 18px;
+
+    line-height: 1.9;
+
+    margin-bottom: 18px;
 }
 
 .mentor-divider {
     width: 90px;
     height: 2px;
+
     background: #00ff9c;
+
     margin: 35px auto;
-    box-shadow: 0 0 15px #00ff9c;
+
+    box-shadow: 0 0 15px rgba(0, 255, 156, 0.6);
+}
+
+.mentor-message h3 {
+    color: #fff;
+
+    font-size: 35px;
+
+    margin: 30px 0 20px;
 }
 
 .mentor-message .mentor-highlight {
     color: #00ff9c;
+
     font-family: monospace;
+
     margin-top: 30px;
 }
 
 .mentor-signature {
     color: #fff !important;
+
     font-family: monospace;
 }
 
 
-/* =================================
-   MEMORY PHOTO - KEEP FACE VISIBLE
-================================= */
+/* =========================================================
+   PERSONAL MESSAGE
+========================================================= */
 
-.memory-photo {
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #000;
+.message-section {
+    padding: 120px 8%;
+    background: #080808;
 }
 
-.memory-photo img {
-    width: 100%;
-    height: auto;
+.message-box {
+    max-width: 900px;
+
+    margin: 70px auto 0;
+
+    min-height: 350px;
+
+    padding: 45px;
+
+    border: 1px solid #222;
+
+    background: #050505;
+
+    font-family: monospace;
+
+    color: #aaa;
+
+    line-height: 2;
+
+    font-size: 16px;
+
+    position: relative;
+}
+
+#typing-message {
+    white-space: pre-line;
+}
+
+.cursor {
+    color: #00ff9c;
+
+    animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    51%,
+    100% {
+        opacity: 0;
+    }
+
+}
+
+
+/* =========================================================
+   CLASSIFIED
+========================================================= */
+
+.easter-section {
+    padding: 120px 8%;
+    text-align: center;
+}
+
+.easter-section .section-label {
+    text-align: left;
+}
+
+.easter-section h2 {
+    text-align: left;
+}
+
+#secretBtn {
+    margin-top: 60px;
+
+    padding: 16px 25px;
+
+    border: 1px solid #00ff9c;
+
+    background: transparent;
+
+    color: #00ff9c;
+
+    font-family: monospace;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+#secretBtn:hover {
+    background: #00ff9c;
+    color: #000;
+
+    box-shadow:
+        0 0 30px rgba(0, 255, 156, 0.25);
+}
+
+.secret-message {
+    max-width: 600px;
+
+    margin: 40px auto 0;
+
+    padding: 35px;
+
+    border: 1px solid rgba(0, 255, 156, 0.3);
+
+    background: #080808;
+
+    font-family: monospace;
+
+    line-height: 1.8;
+
+    display: none;
+}
+
+.secret-message.show {
     display: block;
-    object-fit: contain;
-    object-position: center top;
+
+    animation: secretReveal 0.5s ease forwards;
+}
+
+@keyframes secretReveal {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+.secret-message h3 {
+    color: #00ff9c;
+
+    font-size: 32px;
+
+    margin: 20px 0;
+}
+
+.secret-message strong {
+    color: #00ff9c;
 }
 
 
-/* =================================
-   MOBILE
-================================= */
+/* =========================================================
+   FINAL
+========================================================= */
+
+.final-section {
+    min-height: 90vh;
+
+    padding: 120px 8%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(0, 255, 156, 0.08),
+            transparent 45%
+        );
+}
+
+.final-content {
+    max-width: 1000px;
+}
+
+.final-content > p:first-child {
+    color: #00ff9c;
+
+    font-family: monospace;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 25px;
+}
+
+.final-content h2 {
+    font-size: clamp(50px, 8vw, 100px);
+
+    line-height: 0.9;
+
+    letter-spacing: -4px;
+}
+
+.final-content h2 span {
+    color: transparent;
+
+    -webkit-text-stroke: 1px #00ff9c;
+}
+
+.final-stats {
+    margin: 50px 0;
+
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+}
+
+.final-stats span {
+    padding: 10px 16px;
+
+    border: 1px solid #222;
+
+    color: #888;
+
+    font-family: monospace;
+
+    font-size: 12px;
+}
+
+.code-blaster {
+    font-family: monospace;
+
+    color: #00ff9c;
+
+    font-size: 22px;
+
+    letter-spacing: 3px;
+
+    margin-top: 35px;
+}
+
+.made-with {
+    margin-top: 30px;
+
+    color: #666;
+
+    line-height: 1.8;
+
+    font-family: monospace;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    padding: 35px 8%;
+
+    border-top: 1px solid #181818;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    color: #555;
+
+    font-family: monospace;
+
+    font-size: 11px;
+}
+
+footer p:first-child {
+    color: #888;
+}
+
+
+/* =========================================================
+   GENERAL ANIMATIONS
+========================================================= */
+
+.impact-card,
+.teacher-card,
+.memory-card,
+.mentor-terminal,
+.message-box {
+    animation: fadeUp 0.8s ease both;
+}
+
+@keyframes fadeUp {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
 
 @media (max-width: 900px) {
 
-    .mentor-section {
+    header {
+        padding: 20px 5%;
+    }
+
+    .hero {
+        padding: 140px 6% 80px;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .code-decoration {
+        display: none;
+    }
+
+    .teacher-section,
+    .impact-section,
+    .terminal-section,
+    .memory-section,
+    .mentor-section,
+    .message-section,
+    .easter-section {
         padding: 90px 6%;
+    }
+
+    .teacher-card {
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+    }
+
+    .impact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .memory-card {
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+    }
+
+    .memory-info h3 {
+        font-size: clamp(42px, 10vw, 70px);
     }
 
     .mentor-terminal-body {
         padding: 25px 20px;
     }
 
-    .mentor-message {
-        margin-top: 50px;
-    }
 }
 
 
+/* =========================================================
+   MOBILE
+========================================================= */
+
 @media (max-width: 600px) {
 
-    .mentor-section {
+    header {
+        padding: 17px 5%;
+    }
+
+    .logo {
+        font-size: 13px;
+    }
+
+    .status {
+        font-size: 9px;
+    }
+
+    .hero {
+        min-height: 100vh;
+
+        padding: 130px 5% 70px;
+    }
+
+    .hero h1 {
+        font-size: 52px;
+
+        letter-spacing: -3px;
+    }
+
+    .hero-text {
+        font-size: 16px;
+    }
+
+    .small-title {
+        font-size: 10px;
+    }
+
+    .teacher-section,
+    .impact-section,
+    .terminal-section,
+    .memory-section,
+    .mentor-section,
+    .message-section,
+    .easter-section {
         padding: 80px 5%;
     }
 
+    .teacher-section > h2,
+    .impact-section > h2,
+    .memory-header > h2,
+    .message-section > h2,
+    .easter-section > h2,
     .mentor-section > h2 {
-        font-size: 43px;
+        font-size: 48px;
+
+        letter-spacing: -2px;
     }
 
+    .teacher-info h3 {
+        font-size: 30px;
+    }
+
+    .stats {
+        gap: 25px;
+    }
+
+    .stats strong {
+        font-size: 28px;
+    }
+
+    .big-terminal-body,
+    .memory-terminal-body,
     .mentor-terminal-body {
-        font-size: 13px;
         padding: 22px 15px;
+
+        font-size: 12px;
+
+        line-height: 1.8;
+    }
+
+    .memory-card {
+        margin-top: 45px;
+    }
+
+    .memory-info h3 {
+        font-size: 42px;
+
+        line-height: 0.95;
+    }
+
+    .memory-text {
+        font-size: 15px;
+    }
+
+    .mentor-message {
+        margin-top: 50px;
     }
 
     .mentor-message > p {
@@ -140,4 +1294,87 @@
     .mentor-message h3 {
         font-size: 28px;
     }
+
+    .message-box {
+        padding: 25px 18px;
+
+        min-height: 400px;
+
+        font-size: 13px;
+
+        line-height: 1.9;
+    }
+
+    .secret-message {
+        padding: 25px 18px;
+    }
+
+    .final-section {
+        padding: 100px 5%;
+    }
+
+    .final-content h2 {
+        font-size: 52px;
+
+        letter-spacing: -3px;
+    }
+
+    .final-stats {
+        gap: 8px;
+    }
+
+    .final-stats span {
+        font-size: 10px;
+
+        padding: 8px 11px;
+    }
+
+    footer {
+        padding: 25px 5%;
+
+        flex-direction: column;
+
+        text-align: center;
+    }
+
+    .terminal-body {
+        padding: 25px 18px;
+
+        font-size: 12px;
+    }
+
+    #target h1 {
+        font-size: 38px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL DEVICES
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .hero h1 {
+        font-size: 45px;
+    }
+
+    .teacher-section > h2,
+    .impact-section > h2,
+    .memory-header > h2,
+    .message-section > h2,
+    .easter-section > h2,
+    .mentor-section > h2 {
+        font-size: 42px;
+    }
+
+    .memory-info h3 {
+        font-size: 36px;
+    }
+
+    .final-content h2 {
+        font-size: 45px;
+    }
+
 }
