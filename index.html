@@ -743,7 +743,185 @@
 
         </section>
 
+<!-- ================================
+     CODE BLASTER DEBUG MISSION
+================================ -->
 
+<section class="game-section" id="debug-game">
+
+    <div class="section-label">
+        08 / CODE_BLASTER_DEBUG_MISSION
+    </div>
+
+    <div class="game-container">
+
+        <!-- GAME INTRO -->
+
+        <div id="game-start" class="game-screen active">
+
+            <div class="game-alert">
+                > SYSTEM ALERT ⚠️
+            </div>
+
+            <h2>
+                CODE BLASTER
+                <span>DEBUG MISSION</span>
+            </h2>
+
+            <p class="game-intro">
+                Bugs have infiltrated the project.
+                Your mission is simple:
+            </p>
+
+            <div class="mission-list">
+                <p>🐛 FIND THE BUG</p>
+                <p>💻 FIX THE CODE</p>
+                <p>🧠 SOLVE THE PROBLEM</p>
+                <p>🚀 SAVE THE PROJECT</p>
+            </div>
+
+            <div class="game-warning">
+                > WARNING: 3 LIVES AVAILABLE
+            </div>
+
+            <button class="game-button" onclick="startGame()">
+                START MISSION ⚡
+            </button>
+
+        </div>
+
+
+        <!-- GAME SCREEN -->
+
+        <div id="game-play" class="game-screen">
+
+            <div class="game-status">
+
+                <div>
+                    LEVEL:
+                    <span id="level-number">1</span>/5
+                </div>
+
+                <div>
+                    SCORE:
+                    <span id="score">0</span>
+                </div>
+
+                <div>
+                    LIVES:
+                    <span id="lives">❤️❤️❤️</span>
+                </div>
+
+            </div>
+
+            <div class="game-progress">
+                <div id="game-progress-bar"></div>
+            </div>
+
+            <div class="question-area">
+
+                <div class="bug-title">
+                    🐛 BUG DETECTED
+                </div>
+
+                <h3 id="question-title">
+                    FIND THE BUG
+                </h3>
+
+                <div class="code-box">
+                    <pre id="code-display"></pre>
+                </div>
+
+                <p id="question-text"></p>
+
+                <div id="answers" class="answer-grid"></div>
+
+                <div id="game-feedback"></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- GAME OVER -->
+
+        <div id="game-over" class="game-screen">
+
+            <div class="game-alert">
+                > SYSTEM FAILURE 💥
+            </div>
+
+            <h2>
+                PROJECT
+                <span>CRASHED.</span>
+            </h2>
+
+            <p>
+                Don't worry. Even the best developers
+                encounter bugs.
+            </p>
+
+            <div class="final-score">
+                SCORE:
+                <span id="game-over-score">0</span>
+            </div>
+
+            <button class="game-button" onclick="startGame()">
+                TRY AGAIN 🔄
+            </button>
+
+        </div>
+
+
+        <!-- GAME COMPLETE -->
+
+        <div id="game-complete" class="game-screen">
+
+            <div class="success-icon">
+                ✓
+            </div>
+
+            <div class="game-alert success">
+                > SYSTEM RESTORED
+            </div>
+
+            <h2>
+                ALL BUGS
+                <span>FIXED.</span>
+            </h2>
+
+            <div class="success-terminal">
+
+                <p>> BUGS_FOUND: 05</p>
+                <p>> BUGS_FIXED: 05</p>
+                <p>> PROJECT_STATUS: SAVED ✓</p>
+                <p>> CODE_BLASTER_STATUS: LEGENDARY ⚡</p>
+
+            </div>
+
+            <p class="teacher-message">
+                You taught me that when the code
+                doesn't work, we don't give up —
+                <strong>we debug it.</strong>
+            </p>
+
+            <p class="lucky-message">
+                I'm really lucky to be your student, Sir. ❤️
+            </p>
+
+            <h3>
+                HAPPY TEACHERS' DAY! ❤️
+            </h3>
+
+            <button class="game-button" onclick="restartGame()">
+                PLAY AGAIN 🔄
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
         <!-- =========================
              CLASSIFIED
         ========================== -->
