@@ -262,3 +262,38 @@ document.addEventListener("keydown", (event) => {
 // =========================
 
 document.body.style.overflow = "hidden";
+/* ================================
+   SECRET CODE BLASTER
+================================ */
+
+let secretKeys = "";
+
+document.addEventListener("keydown", function (event) {
+
+    secretKeys += event.key.toLowerCase();
+
+    if (secretKeys.length > 20) {
+        secretKeys = secretKeys.slice(-20);
+    }
+
+    if (secretKeys.includes("codeblaster")) {
+        document.getElementById("secretEgg").classList.add("active");
+        secretKeys = "";
+    }
+});
+
+function closeSecret() {
+    document.getElementById("secretEgg").classList.remove("active");
+}
+
+function showBiryani() {
+
+    const message = document.getElementById("biryaniMessage");
+
+    message.innerHTML = `
+        > BIRYANI.exe STARTING...<br>
+        > ████████████████████ 100%<br><br>
+        🍛 MISSION COMPLETE 🍛<br>
+        <strong>CODE BLASTER DESERVES BIRYANI!</strong> ❤️
+    `;
+}
