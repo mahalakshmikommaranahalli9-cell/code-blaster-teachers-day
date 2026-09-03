@@ -1470,3 +1470,137 @@ footer p:first-child {
     }
 
 }
+/* =================================
+   THE BEGINNING
+================================= */
+
+.beginning-section {
+    padding: 120px 8%;
+    background: #050505;
+    position: relative;
+}
+
+.beginning-content {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: center;
+}
+
+.beginning-text {
+    max-width: 600px;
+}
+
+.beginning-date {
+    display: inline-block;
+    font-family: monospace;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: #777;
+    margin-bottom: 25px;
+}
+
+.beginning-text h2 {
+    font-size: clamp(55px, 8vw, 105px);
+    line-height: 0.9;
+    letter-spacing: -5px;
+    margin: 0 0 35px;
+}
+
+.beginning-text h2 span {
+    color: #777;
+}
+
+.beginning-highlight {
+    font-size: 22px;
+    line-height: 1.6;
+    margin-bottom: 35px;
+}
+
+.beginning-terminal {
+    border-left: 2px solid #777;
+    padding: 20px 25px;
+    background: #0a0a0a;
+    font-family: monospace;
+    font-size: 13px;
+    line-height: 1.9;
+    color: #aaa;
+    margin-bottom: 35px;
+}
+
+.beginning-terminal p {
+    margin: 0;
+}
+
+.beginning-message {
+    color: #888;
+    line-height: 1.8;
+    max-width: 500px;
+}
+
+.beginning-lucky {
+    margin-top: 25px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.beginning-photo {
+    position: relative;
+    border: 1px solid #222;
+    padding: 12px;
+    background: #080808;
+    overflow: hidden;
+}
+
+.beginning-photo img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.photo-caption {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 8px 5px;
+    font-family: monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #666;
+}
+
+.photo-caption strong {
+    color: #aaa;
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+    .beginning-section {
+        padding: 80px 6%;
+    }
+
+    .beginning-content {
+        grid-template-columns: 1fr;
+        gap: 45px;
+    }
+
+    .beginning-text h2 {
+        font-size: 60px;
+        letter-spacing: -3px;
+    }
+
+    .beginning-highlight {
+        font-size: 19px;
+    }
+
+    .beginning-terminal {
+        font-size: 11px;
+        padding: 15px;
+    }
+
+}
