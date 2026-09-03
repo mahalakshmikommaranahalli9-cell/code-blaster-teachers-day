@@ -848,3 +848,24 @@ footer {
         font-size: 11px;
     }
 }
+/* =========================
+   SIR PHOTO FIX
+========================= */
+
+.teacher-image {
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sir-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+}
