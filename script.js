@@ -613,3 +613,347 @@ function restartGame() {
     startGame();
 
 }
+/* =========================================
+   CODE BLASTER — DEBUG MISSION
+========================================= */
+
+const debugQuestions = [
+    {
+        title: "LEVEL 1 — FIND THE BUG",
+        code: `let score = 100;
+console.log(score);`,
+        question: "What will this code print?",
+        answers: [
+            "100",
+            "score",
+            "undefined",
+            "Error"
+        ],
+        correct: 0
+    },
+
+    {
+        title: "LEVEL 2 — FIX THE CODE",
+        code: `let name = "Code Blaster";
+console.log(name);`,
+        question: "Which statement correctly prints the variable?",
+        answers: [
+            "console.log(name);",
+            "Console.Log(name);",
+            "print(name);",
+            "echo name;"
+        ],
+        correct: 0
+    },
+
+    {
+        title: "LEVEL 3 — SOLVE THE PROBLEM",
+        code: `function add(a, b) {
+    return a + b;
+}
+
+add(10, 20);`,
+        question: "What is the result?",
+        answers: [
+            "20",
+            "30",
+            "1020",
+            "Error"
+        ],
+        correct: 1
+    },
+
+    {
+        title: "LEVEL 4 — PROJECT RESCUE",
+        code: `for (let i = 0; i < 3; i++) {
+    console.log(i);
+}`,
+        question: "How many times will the loop run?",
+        answers: [
+            "1 time",
+            "2 times",
+            "3 times",
+            "Infinite times"
+        ],
+        correct: 2
+    },
+
+    {
+        title: "FINAL BOSS — IMPOSSIBLE BUG",
+        code: `let x = 10;
+
+if (x > 5) {
+    console.log("BUG FIXED!");
+}`,
+        question: "Will the message 'BUG FIXED!' be printed?",
+        answers: [
+            "Yes",
+            "No",
+            "Only sometimes",
+            "Syntax error"
+        ],
+        correct: 0
+    }
+];
+
+
+let currentLevel = 0;
+let gameScore = 0;
+let gameLives = 3;
+let questionLocked = false;
+
+
+/* START GAME */
+
+function startGame() {
+
+    currentLevel = 0;
+    gameScore = 0;
+    gameLives = 3;
+    questionLocked = false;
+
+    document.getElementById("game-start").classList.remove("active");
+    document.getElementById("game-over").classList.remove("active");
+    document.getElementById("game-complete").classList.remove("active");
+
+    document.getElementById("game-play").classList.add("active");
+
+    updateGameStatus();
+    loadQuestion();
+}
+
+
+/* LOAD QUESTION */
+
+function loadQuestion() {
+
+    questionLocked = false;
+
+    const question = debugQuestions[currentLevel];
+
+    document.getElementById("level-number").textContent =
+        currentLevel + 1;
+
+    document.getElementById("question-title").textContent =
+        question.title;
+
+    document.getElementById("code-display").textContent =
+        question.code;
+
+    document.getElementById("question-text").textContent =
+        question.question;
+
+    document.getElementById("game-feedback").textContent = "";
+
+    const answersContainer =
+        document.getElementById("answers");
+
+    answersContainer.innerHTML = "";
+
+
+    question.answers.forEach(function(answer, index) {
+
+        const button = document.createElement("button");
+
+        button.className = "answer-button";
+
+        button.textContent =
+            String.fromCharCode(65 + index) + ") " + answer;
+
+        button.onclick = function() {
+
+            checkAnswer(index, button);
+
+        };
+
+        answersContainer.appendChild(button);
+
+    });
+
+
+    updateProgress();
+}
+
+
+/* CHECK ANSWER */
+
+function checkAnswer(selectedIndex, selectedButton) {
+
+    if (questionLocked) {
+        return;
+    }
+
+    const question = debugQuestions[currentLevel];
+
+    if (selectedIndex === question.correct) {
+
+        questionLocked = true;
+
+        selectedButton.classList.add("correct");
+
+        gameScore += 100;
+
+        document.getElementById("game-feedback").textContent =
+            "> CORRECT ✓ BUG FIXED! +100";
+
+        updateGameStatus();
+
+
+        setTimeout(function() {
+
+            currentLevel++;
+
+            if (currentLevel >= debugQuestions.length) {
+
+                showGameComplete();
+
+            } else {
+
+                loadQuestion();
+
+            }
+
+        }, 1000);
+
+
+    } else {
+
+        selectedButton.classList.add("wrong");
+
+        gameLives--;
+
+        document.getElementById("game-feedback").textContent =
+            "> WRONG ✕ BUG SURVIVED!";
+
+        updateGameStatus();
+
+
+        const gameContainer =
+            document.querySelector(".game-container");
+
+        if (gameContainer) {
+
+            gameContainer.classList.add("game-shake");
+
+            setTimeout(function() {
+
+                gameContainer.classList.remove("game-shake");
+
+            }, 400);
+
+        }
+
+
+        if (gameLives <= 0) {
+
+            questionLocked = true;
+
+            setTimeout(function() {
+
+                showGameOver();
+
+            }, 800);
+
+        } else {
+
+            setTimeout(function() {
+
+                selectedButton.classList.remove("wrong");
+
+                document.getElementById("game-feedback").textContent =
+                    "> TRY AGAIN...";
+
+            }, 800);
+
+        }
+
+    }
+
+}
+
+
+/* UPDATE SCORE + LIVES */
+
+function updateGameStatus() {
+
+    const scoreElement =
+        document.getElementById("score");
+
+    const livesElement =
+        document.getElementById("lives");
+
+    if (scoreElement) {
+        scoreElement.textContent = gameScore;
+    }
+
+    if (livesElement) {
+        livesElement.textContent =
+            "❤️".repeat(gameLives);
+    }
+
+}
+
+
+/* UPDATE PROGRESS */
+
+function updateProgress() {
+
+    const progressBar =
+        document.getElementById("game-progress-bar");
+
+    if (progressBar) {
+
+        const progress =
+            ((currentLevel + 1) /
+            debugQuestions.length) * 100;
+
+        progressBar.style.width =
+            progress + "%";
+
+    }
+
+}
+
+
+/* GAME OVER */
+
+function showGameOver() {
+
+    document.getElementById("game-play")
+        .classList.remove("active");
+
+    document.getElementById("game-over")
+        .classList.add("active");
+
+    document.getElementById("game-over-score")
+        .textContent = gameScore;
+
+}
+
+
+/* GAME COMPLETE */
+
+function showGameComplete() {
+
+    document.getElementById("game-play")
+        .classList.remove("active");
+
+    document.getElementById("game-complete")
+        .classList.add("active");
+
+}
+
+
+/* PLAY AGAIN */
+
+function restartGame() {
+
+    document.getElementById("game-complete")
+        .classList.remove("active");
+
+    document.getElementById("game-over")
+        .classList.remove("active");
+
+    startGame();
+
+}
