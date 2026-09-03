@@ -1775,3 +1775,69 @@ footer {
         font-size: 46px;
     }
 }
+/* ================================
+   MEMORY SECTION - FINAL FIX
+================================ */
+
+.memory-card {
+    width: 100%;
+    max-width: 1100px;
+    margin: 70px auto 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+    gap: 70px;
+    align-items: center;
+}
+
+.memory-photo {
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.memory-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.memory-info {
+    min-width: 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+.memory-info h3 {
+    font-size: clamp(42px, 5vw, 78px);
+    line-height: 0.95;
+    max-width: 100%;
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+.memory-text {
+    max-width: 100%;
+    line-height: 1.8;
+    overflow-wrap: break-word;
+}
+
+@media (max-width: 900px) {
+    .memory-card {
+        grid-template-columns: 1fr;
+        gap: 45px;
+    }
+
+    .memory-info h3 {
+        font-size: clamp(42px, 11vw, 70px);
+    }
+}
+
+@media (max-width: 600px) {
+    .memory-card {
+        margin-top: 45px;
+    }
+
+    .memory-info h3 {
+        font-size: 42px;
+    }
+}
