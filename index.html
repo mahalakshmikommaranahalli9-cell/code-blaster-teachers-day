@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CODE BLASTER.exe | Teachers' Day 2026</title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         BOOT SCREEN
+    ========================== -->
+
+    <div id="boot-screen">
+
+        <div class="terminal">
+
+            <div class="terminal-top">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+
+                <span class="terminal-title">
+                    CODE BLASTER.exe
+                </span>
+            </div>
+
+            <div class="terminal-body">
+
+                <p>> INITIALIZING SYSTEM...</p>
+
+                <p id="line1"></p>
+                <p id="line2"></p>
+                <p id="line3"></p>
+                <p id="line4"></p>
+
+                <div class="progress-container">
+                    <div id="progress"></div>
+                </div>
+
+                <p id="percentage">0%</p>
+
+                <div id="target" class="hidden">
+
+                    <p class="success">
+                        ✓ TARGET FOUND
+                    </p>
+
+                    <h1>
+                        CODE BLASTER <span>✨</span>
+                    </h1>
+
+                    <p class="teacher-name">
+                        PRUTHVIRAJ MUNDARGI
+                    </p>
+
+                    <p class="access">
+                        ACCESS GRANTED.
+                    </p>
+
+                    <button id="enterBtn">
+                        <i class="fa-solid fa-terminal"></i>
+                        EXECUTE
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         MAIN WEBSITE
+    ========================== -->
+
+    <main id="main-content">
+
+        <header>
+
+            <div class="logo">
+                CODE BLASTER<span>.exe</span>
+            </div>
+
+            <div class="status">
+                <span></span> SYSTEM ONLINE
+            </div>
+
+        </header>
+
+
+        <!-- HERO -->
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <p class="small-title">
+                    TEACHERS' DAY 2026
+                </p>
+
+                <h1>
+                    Not just a teacher.
+                    <br>
+                    <span>A CODE BLASTER.</span>
+                </h1>
+
+                <p class="hero-text">
+                    Some teachers teach subjects.
+                    Great teachers change the way
+                    students think.
+                </p>
+
+                <button class="scroll-btn" onclick="showMessage()">
+                    <i class="fa-solid fa-arrow-down"></i>
+                    OPEN MESSAGE
+                </button>
+
+            </div>
+
+            <div class="code-decoration">
+                <span>&lt;teacher&gt;</span>
+                <br>
+                <span>&nbsp;&nbsp;inspire();</span>
+                <br>
+                <span>&nbsp;&nbsp;teach();</span>
+                <br>
+                <span>&nbsp;&nbsp;impact();</span>
+                <br>
+                <span>&lt;/teacher&gt;</span>
+            </div>
+
+        </section>
+
+
+        <!-- TEACHER -->
+
+        <section class="teacher-section">
+
+            <p class="section-label">
+                01 / THE TEACHER
+            </p>
+
+            <h2>
+                Meet the<br>
+                <span>CODE BLASTER.</span>
+            </h2>
+
+            <div class="teacher-card">
+
+                <div class="teacher-image">
+
+                    <!-- We will add Sir's photo later -->
+
+                    <div class="photo-placeholder">
+                        <i class="fa-solid fa-user"></i>
+                        <p>PHOTO<br>LOADING...</p>
+                    </div>
+
+                </div>
+
+                <div class="teacher-info">
+
+                    <h3>
+                        Pruthviraj Mundargi
+                    </h3>
+
+                    <p class="role">
+                        Teacher • Mentor • Developer
+                    </p>
+
+                    <p>
+                        A teacher who doesn't simply give
+                        answers — but makes students curious
+                        enough to find them.
+                    </p>
+
+                    <div class="stats">
+
+                        <div>
+                            <strong>∞</strong>
+                            <small>INSPIRATION</small>
+                        </div>
+
+                        <div>
+                            <strong>100%</strong>
+                            <small>DEDICATION</small>
+                        </div>
+
+                        <div>
+                            <strong>∞</strong>
+                            <small>IMPACT</small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- BEYOND CODE -->
+
+        <section class="impact-section">
+
+            <p class="section-label">
+                02 / BEYOND CODE
+            </p>
+
+            <h2>
+                More than<br>
+                <span>just coding.</span>
+            </h2>
+
+            <div class="impact-grid">
+
+                <div class="impact-card">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    <h3>Think</h3>
+                    <p>
+                        Learning to understand the problem
+                        before writing the solution.
+                    </p>
+                </div>
+
+                <div class="impact-card">
+                    <i class="fa-solid fa-code"></i>
+                    <h3>Build</h3>
+                    <p>
+                        Turning ideas into real projects
+                        and real experiences.
+                    </p>
+                </div>
+
+                <div class="impact-card">
+                    <i class="fa-solid fa-rocket"></i>
+                    <h3>Believe</h3>
+                    <p>
+                        Having the confidence to try,
+                        fail, learn and try again.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- TERMINAL -->
+
+        <section class="terminal-section">
+
+            <p class="section-label">
+                03 / SYSTEM LOG
+            </p>
+
+            <div class="big-terminal">
+
+                <div class="terminal-top">
+
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+
+                    <span>
+                        teacher_impact.sh
+                    </span>
+
+                </div>
+
+                <div class="big-terminal-body">
+
+                    <p>
+                        $ whoami
+                    </p>
+
+                    <p class="green-text">
+                        Code Blaster ✨
+                    </p>
+
+                    <p>
+                        $ mission
+                    </p>
+
+                    <p>
+                        Teach. Inspire. Guide. Repeat.
+                    </p>
+
+                    <p>
+                        $ student_impact
+                    </p>
+
+                    <p class="green-text">
+                        UNLIMITED
+                    </p>
+
+                    <p>
+                        $ status
+                    </p>
+
+                    <p class="green-text">
+                        LEGENDARY TEACHER DETECTED ✓
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- MESSAGE -->
+
+        <section class="message-section" id="message">
+
+            <p class="section-label">
+                04 / PERSONAL MESSAGE
+            </p>
+
+            <h2>
+                A message from<br>
+                <span>Mahalakshmi.</span>
+            </h2>
+
+            <div class="message-box">
+
+                <p id="typing-message"></p>
+
+                <span class="cursor">|</span>
+
+            </div>
+
+        </section>
+
+
+        <!-- EASTER EGG -->
+
+        <section class="easter-section">
+
+            <p class="section-label">
+                05 / CLASSIFIED
+            </p>
+
+            <h2>
+                One more<br>
+                <span>thing...</span>
+            </h2>
+
+            <button id="secretBtn">
+                <i class="fa-solid fa-lock"></i>
+                ACCESS CLASSIFIED FILE
+            </button>
+
+            <div id="secret-message" class="secret-message">
+
+                <p>
+                    CLASSIFIED FILE OPENED 🔓
+                </p>
+
+                <h3>
+                    BIRYANI.exe 🍛
+                </h3>
+
+                <p>
+                    Mission requirement:
+                    Keep the CODE BLASTER happy.
+                </p>
+
+                <p>
+                    Recommended solution:
+                    <strong>BIRYANI.</strong> 😂
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- FINAL -->
+
+        <section class="final-section">
+
+            <div class="final-content">
+
+                <p>
+                    MISSION COMPLETE
+                </p>
+
+                <h2>
+                    Happy Teachers' Day,
+                    <span>Sir.</span>
+                </h2>
+
+                <div class="final-stats">
+
+                    <span>Knowledge ✓</span>
+                    <span>Inspiration ✓</span>
+                    <span>Memories ✓</span>
+                    <span>Gratitude ✓</span>
+
+                </div>
+
+                <div class="code-blaster">
+                    CODE BLASTER ✨
+                </div>
+
+                <p class="made-with">
+                    Made with code, memories & gratitude.
+                    <br>
+                    — Mahalakshmi ❤️
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <footer>
+
+            <p>
+                CODE BLASTER.exe
+            </p>
+
+            <p>
+                Teachers' Day 2026 • Built with ❤️
+            </p>
+
+        </footer>
+
+    </main>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script src="script.js"></script>
+
+</body>
+</html>
