@@ -1378,3 +1378,95 @@ footer p:first-child {
     }
 
 }
+/* ================================
+   VIDEO MEMORY
+================================ */
+
+.video-memory {
+    padding: 120px 8%;
+    background: #050505;
+    position: relative;
+}
+
+.video-memory-content {
+    max-width: 900px;
+    margin: auto;
+}
+
+.video-heading {
+    margin-bottom: 45px;
+}
+
+.video-heading span {
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: #777;
+}
+
+.video-heading h2 {
+    margin-top: 12px;
+    font-size: clamp(32px, 5vw, 65px);
+    line-height: 1;
+    letter-spacing: -2px;
+}
+
+.video-terminal {
+    border: 1px solid #222;
+    background: #080808;
+    padding: 12px;
+    box-shadow: 0 0 40px rgba(255,255,255,0.03);
+}
+
+.terminal-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 14px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #222;
+    font-family: monospace;
+    font-size: 12px;
+    color: #777;
+}
+
+.memory-video {
+    display: block;
+    width: 100%;
+    max-height: 720px;
+    object-fit: contain;
+    background: #000;
+}
+
+.video-caption {
+    margin-top: 28px;
+    max-width: 650px;
+    color: #999;
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .video-memory {
+        padding: 80px 6%;
+    }
+
+    .video-heading h2 {
+        font-size: 38px;
+    }
+
+    .video-terminal {
+        padding: 8px;
+    }
+
+    .terminal-top {
+        font-size: 10px;
+    }
+
+    .memory-video {
+        max-height: 75vh;
+    }
+
+}
