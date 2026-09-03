@@ -1841,3 +1841,101 @@ footer {
         font-size: 42px;
     }
 }
+/* ================================
+   SECRET CODE BLASTER EASTER EGG
+================================ */
+
+.secret-egg {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.92);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    padding: 20px;
+}
+
+.secret-egg.active {
+    display: flex;
+}
+
+.secret-box {
+    width: 100%;
+    max-width: 650px;
+    background: #050505;
+    border: 1px solid #00ff9c;
+    padding: 40px;
+    position: relative;
+    box-shadow: 0 0 50px rgba(0, 255, 156, 0.2);
+    font-family: monospace;
+}
+
+.secret-close {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 28px;
+    color: #888;
+    cursor: pointer;
+}
+
+.secret-close:hover {
+    color: #00ff9c;
+}
+
+.secret-box p {
+    color: #aaa;
+    line-height: 1.8;
+}
+
+.secret-box .terminal-green {
+    color: #00ff9c;
+}
+
+.secret-box h2 {
+    color: white;
+    font-size: 42px;
+    margin: 25px 0;
+}
+
+.secret-box h3 {
+    color: #ff4f8b;
+    margin-top: 30px;
+}
+
+.secret-line {
+    color: #ddd !important;
+}
+
+.secret-box button {
+    margin-top: 25px;
+    padding: 14px 22px;
+    background: transparent;
+    border: 1px solid #00ff9c;
+    color: #00ff9c;
+    font-family: monospace;
+    cursor: pointer;
+}
+
+.secret-box button:hover {
+    background: #00ff9c;
+    color: #000;
+}
+
+#biryaniMessage {
+    margin-top: 25px;
+    color: #ffb347;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+@media (max-width: 600px) {
+    .secret-box {
+        padding: 28px 20px;
+    }
+
+    .secret-box h2 {
+        font-size: 30px;
+    }
+}
