@@ -1604,3 +1604,397 @@ footer p:first-child {
     }
 
 }
+/* =========================================
+   CODE BLASTER — DEBUG MISSION GAME
+========================================= */
+
+.game-section {
+    padding: 120px 8%;
+    background: #030303;
+    position: relative;
+    border-top: 1px solid #151515;
+}
+
+.game-container {
+    max-width: 1000px;
+    margin: 50px auto 0;
+    border: 1px solid #242424;
+    background: #070707;
+    box-shadow: 0 0 60px rgba(255, 255, 255, 0.03);
+    overflow: hidden;
+}
+
+/* GAME SCREENS */
+
+.game-screen {
+    display: none;
+    padding: 60px;
+    min-height: 500px;
+    text-align: center;
+}
+
+.game-screen.active {
+    display: block;
+    animation: gameScreenIn 0.5s ease;
+}
+
+@keyframes gameScreenIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* INTRO */
+
+.game-alert {
+    font-family: monospace;
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: #888;
+    margin-bottom: 25px;
+}
+
+.game-alert.success {
+    color: #aaa;
+}
+
+.game-screen h2 {
+    font-size: clamp(40px, 7vw, 80px);
+    line-height: 0.95;
+    letter-spacing: -4px;
+    margin: 0 0 30px;
+}
+
+.game-screen h2 span {
+    display: block;
+    color: #777;
+}
+
+.game-intro {
+    color: #999;
+    font-size: 17px;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+.mission-list {
+    max-width: 350px;
+    margin: 0 auto 35px;
+    text-align: left;
+    font-family: monospace;
+    font-size: 14px;
+    line-height: 2;
+    color: #aaa;
+}
+
+.mission-list p {
+    margin: 0;
+}
+
+.game-warning {
+    font-family: monospace;
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 35px;
+}
+
+/* BUTTON */
+
+.game-button {
+    border: 1px solid #555;
+    background: #0b0b0b;
+    color: #eee;
+    padding: 15px 30px;
+    font-family: monospace;
+    font-size: 13px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.game-button:hover {
+    background: #eee;
+    color: #000;
+    border-color: #eee;
+    transform: translateY(-2px);
+}
+
+/* GAME STATUS */
+
+.game-status {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    border-bottom: 1px solid #202020;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+
+    font-family: monospace;
+    font-size: 12px;
+    color: #777;
+}
+
+.game-status span {
+    color: #ddd;
+    margin-left: 5px;
+}
+
+/* PROGRESS */
+
+.game-progress {
+    height: 4px;
+    background: #151515;
+    margin-bottom: 45px;
+    overflow: hidden;
+}
+
+#game-progress-bar {
+    width: 20%;
+    height: 100%;
+    background: #aaa;
+    transition: width 0.4s ease;
+}
+
+/* QUESTION */
+
+.question-area {
+    max-width: 800px;
+    margin: auto;
+}
+
+.bug-title {
+    font-family: monospace;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: #777;
+    margin-bottom: 15px;
+}
+
+.question-area h3 {
+    font-size: 28px;
+    margin-bottom: 30px;
+}
+
+/* CODE BOX */
+
+.code-box {
+    background: #020202;
+    border: 1px solid #222;
+    text-align: left;
+    padding: 25px;
+    margin-bottom: 25px;
+    overflow-x: auto;
+}
+
+.code-box pre {
+    margin: 0;
+    font-family: "Courier New", monospace;
+    font-size: 14px;
+    line-height: 1.8;
+    color: #aaa;
+    white-space: pre-wrap;
+}
+
+/* QUESTION TEXT */
+
+#question-text {
+    color: #999;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+/* ANSWERS */
+
+.answer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.answer-button {
+    width: 100%;
+    padding: 17px;
+    border: 1px solid #292929;
+    background: #090909;
+    color: #aaa;
+    font-family: monospace;
+    font-size: 13px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.answer-button:hover {
+    border-color: #777;
+    color: #fff;
+    background: #111;
+    transform: translateY(-2px);
+}
+
+.answer-button.correct {
+    border-color: #aaa;
+    color: #fff;
+}
+
+.answer-button.wrong {
+    border-color: #555;
+    color: #666;
+}
+
+/* FEEDBACK */
+
+#game-feedback {
+    min-height: 30px;
+    margin-top: 25px;
+    font-family: monospace;
+    font-size: 13px;
+    color: #999;
+}
+
+/* GAME OVER */
+
+.final-score {
+    font-family: monospace;
+    font-size: 16px;
+    color: #777;
+    margin: 30px 0;
+}
+
+.final-score span {
+    color: #eee;
+}
+
+/* SUCCESS */
+
+.success-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #777;
+    border-radius: 50%;
+
+    font-size: 35px;
+}
+
+.success-terminal {
+    max-width: 500px;
+    margin: 30px auto;
+    padding: 20px;
+
+    background: #020202;
+    border: 1px solid #222;
+
+    text-align: left;
+    font-family: monospace;
+    font-size: 12px;
+    line-height: 1.9;
+    color: #888;
+}
+
+.success-terminal p {
+    margin: 0;
+}
+
+.teacher-message {
+    max-width: 650px;
+    margin: 35px auto 20px;
+
+    color: #999;
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+.teacher-message strong {
+    color: #ddd;
+}
+
+.lucky-message {
+    font-size: 20px;
+    margin: 30px 0;
+}
+
+.game-screen h3 {
+    margin-top: 30px;
+    font-size: 20px;
+}
+
+/* GAME SHAKE EFFECT */
+
+.game-shake {
+    animation: gameShake 0.35s ease;
+}
+
+@keyframes gameShake {
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-8px);
+    }
+
+    50% {
+        transform: translateX(8px);
+    }
+
+    75% {
+        transform: translateX(-5px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .game-section {
+        padding: 80px 5%;
+    }
+
+    .game-screen {
+        padding: 35px 20px;
+        min-height: 520px;
+    }
+
+    .game-screen h2 {
+        font-size: 48px;
+        letter-spacing: -2px;
+    }
+
+    .game-status {
+        font-size: 10px;
+        gap: 5px;
+    }
+
+    .answer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .code-box {
+        padding: 18px;
+    }
+
+    .code-box pre {
+        font-size: 12px;
+    }
+
+    .game-button {
+        width: 100%;
+        max-width: 300px;
+    }
+
+}
