@@ -1051,12 +1051,315 @@
     </main>
 
 
-    <!-- =========================
-         JAVASCRIPT
-    ========================== -->
-
     <script src="script.js"></script>
 
-</body>
+<script>
+/* =========================================
+   CODE BLASTER DEBUG MISSION
+   STANDALONE GAME ENGINE
+========================================= */
 
+const cbQuestions = [
+    {
+        title: "LEVEL 1 — FIND THE BUG",
+        code: `let score = 100;
+console.log(score);`,
+        question: "What will this code print?",
+        answers: ["100", "score", "undefined", "Error"],
+        correct: 0
+    },
+
+    {
+        title: "LEVEL 2 — FIX THE CODE",
+        code: `let name = "Code Blaster";
+console.log(name);`,
+        question: "Which statement correctly prints the variable?",
+        answers: [
+            "console.log(name);",
+            "Console.Log(name);",
+            "print(name);",
+            "echo name;"
+        ],
+        correct: 0
+    },
+
+    {
+        title: "LEVEL 3 — SOLVE THE PROBLEM",
+        code: `function add(a, b) {
+    return a + b;
+}
+
+add(10, 20);`,
+        question: "What is the result?",
+        answers: ["20", "30", "1020", "Error"],
+        correct: 1
+    },
+
+    {
+        title: "LEVEL 4 — PROJECT RESCUE",
+        code: `for (let i = 0; i < 3; i++) {
+    console.log(i);
+}`,
+        question: "How many times will the loop run?",
+        answers: [
+            "1 time",
+            "2 times",
+            "3 times",
+            "Infinite times"
+        ],
+        correct: 2
+    },
+
+    {
+        title: "FINAL BOSS — IMPOSSIBLE BUG",
+        code: `let x = 10;
+
+if (x > 5) {
+    console.log("BUG FIXED!");
+}`,
+        question: "Will the message 'BUG FIXED!' be printed?",
+        answers: [
+            "Yes",
+            "No",
+            "Only sometimes",
+            "Syntax error"
+        ],
+        correct: 0
+    }
+];
+
+let cbLevel = 0;
+let cbScore = 0;
+let cbLives = 3;
+let cbLocked = false;
+
+
+/* START */
+
+function cbStartGame() {
+
+    cbLevel = 0;
+    cbScore = 0;
+    cbLives = 3;
+    cbLocked = false;
+
+    document.getElementById("game-start").classList.remove("active");
+    document.getElementById("game-over").classList.remove("active");
+    document.getElementById("game-complete").classList.remove("active");
+    document.getElementById("game-play").classList.add("active");
+
+    cbUpdateStatus();
+    cbLoadQuestion();
+}
+
+
+/* LOAD QUESTION */
+
+function cbLoadQuestion() {
+
+    cbLocked = false;
+
+    const q = cbQuestions[cbLevel];
+
+    document.getElementById("level-number").textContent =
+        cbLevel + 1;
+
+    document.getElementById("score").textContent =
+        cbScore;
+
+    document.getElementById("lives").textContent =
+        "❤️".repeat(cbLives);
+
+    document.getElementById("question-title").textContent =
+        q.title;
+
+    document.getElementById("code-display").textContent =
+        q.code;
+
+    document.getElementById("question-text").textContent =
+        q.question;
+
+    document.getElementById("game-feedback").textContent =
+        "";
+
+    const answers = document.getElementById("answers");
+
+    answers.innerHTML = "";
+
+    q.answers.forEach(function(answer, index) {
+
+        const button = document.createElement("button");
+
+        button.className = "answer-button";
+
+        button.textContent =
+            String.fromCharCode(65 + index) + ") " + answer;
+
+        button.addEventListener("click", function() {
+            cbCheckAnswer(index, button);
+        });
+
+        answers.appendChild(button);
+    });
+
+    const progress =
+        ((cbLevel + 1) / cbQuestions.length) * 100;
+
+    document.getElementById("game-progress-bar").style.width =
+        progress + "%";
+}
+
+
+/* CHECK ANSWER */
+
+function cbCheckAnswer(index, button) {
+
+    if (cbLocked) return;
+
+    const q = cbQuestions[cbLevel];
+
+    if (index === q.correct) {
+
+        cbLocked = true;
+
+        button.classList.add("correct");
+
+        cbScore += 100;
+
+        document.getElementById("game-feedback").textContent =
+            "> CORRECT ✓ BUG FIXED! +100";
+
+        cbUpdateStatus();
+
+        setTimeout(function() {
+
+            cbLevel++;
+
+            if (cbLevel >= cbQuestions.length) {
+
+                document.getElementById("game-play")
+                    .classList.remove("active");
+
+                document.getElementById("game-complete")
+                    .classList.add("active");
+
+            } else {
+
+                cbLoadQuestion();
+
+            }
+
+        }, 1000);
+
+    } else {
+
+        button.classList.add("wrong");
+
+        cbLives--;
+
+        document.getElementById("game-feedback").textContent =
+            "> WRONG ✕ BUG SURVIVED!";
+
+        cbUpdateStatus();
+
+        const container =
+            document.querySelector(".game-container");
+
+        if (container) {
+
+            container.classList.add("game-shake");
+
+            setTimeout(function() {
+                container.classList.remove("game-shake");
+            }, 400);
+        }
+
+        if (cbLives <= 0) {
+
+            cbLocked = true;
+
+            setTimeout(function() {
+
+                document.getElementById("game-play")
+                    .classList.remove("active");
+
+                document.getElementById("game-over")
+                    .classList.add("active");
+
+                document.getElementById("game-over-score")
+                    .textContent = cbScore;
+
+            }, 800);
+
+        } else {
+
+            setTimeout(function() {
+
+                button.classList.remove("wrong");
+
+                document.getElementById("game-feedback")
+                    .textContent = "> TRY AGAIN...";
+
+            }, 700);
+        }
+    }
+}
+
+
+/* STATUS */
+
+function cbUpdateStatus() {
+
+    document.getElementById("score").textContent =
+        cbScore;
+
+    document.getElementById("lives").textContent =
+        "❤️".repeat(cbLives);
+}
+
+
+/* PLAY AGAIN */
+
+function cbRestartGame() {
+
+    document.getElementById("game-complete")
+        .classList.remove("active");
+
+    document.getElementById("game-over")
+        .classList.remove("active");
+
+    cbStartGame();
+}
+
+
+/* CONNECT BUTTONS */
+
+document.querySelectorAll("#debug-game .game-button")
+    .forEach(function(button) {
+
+        const text = button.textContent.trim();
+
+        if (text.includes("START MISSION")) {
+
+            button.onclick = cbStartGame;
+
+        }
+
+        if (text.includes("TRY AGAIN")) {
+
+            button.onclick = cbStartGame;
+
+        }
+
+        if (text.includes("PLAY AGAIN")) {
+
+            button.onclick = cbRestartGame;
+
+        }
+
+    });
+
+</script>
+
+</body>
 </html>
