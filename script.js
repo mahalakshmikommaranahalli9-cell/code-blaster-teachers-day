@@ -852,3 +852,66 @@ function restartGame() {
     startGame();
 
 }
+/* =========================================
+   CODE BLASTER PASSWORD LOCK
+========================================= */
+
+const secretPassword = "15092025";
+
+const passwordLock = document.getElementById("password-lock");
+const secretPasswordInput = document.getElementById("secret-password");
+const unlockButton = document.getElementById("unlock-btn");
+const passwordError = document.getElementById("password-error");
+
+function unlockWebsite() {
+
+    const enteredPassword = secretPasswordInput.value.trim();
+
+    if (enteredPassword === secretPassword) {
+
+        passwordError.textContent = "ACCESS GRANTED ✓";
+
+        passwordError.style.color = "#ffffff";
+
+        unlockButton.textContent = "ACCESS GRANTED ✓";
+
+        setTimeout(() => {
+
+            passwordLock.classList.add("unlocked");
+
+        }, 500);
+
+    } else {
+
+        passwordError.textContent = "ACCESS DENIED — INVALID CODE";
+
+        passwordError.style.color = "#ff5555";
+
+        secretPasswordInput.classList.remove("password-wrong");
+
+        void secretPasswordInput.offsetWidth;
+
+        secretPasswordInput.classList.add("password-wrong");
+
+        secretPasswordInput.value = "";
+
+        secretPasswordInput.focus();
+    }
+}
+
+if (unlockButton) {
+    unlockButton.addEventListener("click", unlockWebsite);
+}
+
+if (secretPasswordInput) {
+
+    secretPasswordInput.addEventListener("keydown", function (event) {
+
+        if (event.key === "Enter") {
+            unlockWebsite();
+        }
+
+    });
+
+    secretPasswordInput.focus();
+}
