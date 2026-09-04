@@ -14,7 +14,49 @@
 </head>
 
 <body>
+<!-- ================================
+     CODE BLASTER PASSWORD LOCK
+================================ -->
+<div id="password-lock">
 
+    <div class="lock-box">
+
+        <div class="lock-icon">🔐</div>
+
+        <div class="lock-title">CODE BLASTER.exe</div>
+
+        <div class="lock-status">
+            CLASSIFIED ACCESS REQUIRED
+        </div>
+
+        <div class="lock-line"></div>
+
+        <p class="lock-question">
+            Who is trying to access this system?
+        </p>
+
+        <p class="lock-hint">
+            Hint: The date of our first meeting
+        </p>
+
+        <input
+            type="password"
+            id="secret-password"
+            placeholder="ENTER SECRET CODE"
+            maxlength="8"
+            autocomplete="off"
+        >
+
+        <button id="unlock-btn" type="button">
+            UNLOCK ⚡
+        </button>
+
+        <p id="password-error"></p>
+
+    </div>
+
+</div>
+<!-- END PASSWORD LOCK -->
     <!-- =========================
          BOOT SCREEN
     ========================== -->
